@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('participants', function (Blueprint $table) {
-            $table->id();
+            $table->id("participant_id");
             $table ->string("nombre",20);
             $table -> string("apellido_paterno", 20);
             $table -> string("apellido_materna", 20);
@@ -23,7 +23,10 @@ return new class extends Migration
             $table -> string("estado", 25);
             $table->string('telefono', 15);
             $table -> string("email", 40)->unique();
-            $table -> foreign('events_id')
+            $table->foreignId("event_id");
+
+            //Configuración explícita de llaves foráneas
+            $table -> foreign('event_id')
                    ->references('id')
                    ->on('events')
                    -> onDelete("cascade");

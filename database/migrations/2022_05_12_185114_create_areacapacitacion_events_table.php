@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('areacapacitacion_events', function (Blueprint $table) {
             $table->id();
             $table->foreignId("areac_id")->constrained()->onDelete("cascade");
-            $table->foreignId("events_id")->constrained()->onDelete("cascade");
+            $table->foreignId("event_id")->constrained()->onDelete("cascade");
 
             //Índice unique que garantice la integridad referencial N:N
-            $table->unique(["areac_id","events_id"]);
+            $table->unique(["areac_id","event_id"]);
             //$table->timestamps();
         });
     }

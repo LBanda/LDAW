@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('participants__events', function (Blueprint $table) {
+        Schema::create('roles_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("participant_id")->constrained()->onDelete("cascade");
-            $table->foreignId("event_id")->constrained()->onDelete("cascade");
+            $table->timestamps();
+            $table->foreignId("rol_id")->constrained()->onDelete("cascade");
+            $table->foreignId("user_id")->constrained()->onDelete("cascade");
             //$table->timestamps();
 
             //Índice unique que garantice la integridad referencial N:N
-            $table->unique(["participant_id","event_id"]);
-            //$table->timestamps();
+            $table->unique(["rol_id","user_id"]);
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('participants__events');
+        Schema::dropIfExists('roles_users');
     }
 };

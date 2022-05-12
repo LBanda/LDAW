@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id();
+            $table->id("event_id");
             $table->string("siglas_evento", 20);
             $table->string("nombre_evento", 255);
             $table->string("descripcion", 255)->nullable();
@@ -22,14 +22,19 @@ return new class extends Migration
             $table->integer("capacidad_evento");
             $table->decimal("costo",7,2);
             $table->string("ubicacion", 20);
+            $table->foreignId("areac_id");
+            $table->foreignId("category_id");
+
+
+            //Configuración explícita de llaves foráneas
             $table->foreign('areac_id')
                   ->references("id")
                   ->on('areacapacitacion')
-                  ->onDelete("cascade");
-            $table->foreign("id_category")
+                  ->onDelete("cascade")->nullable();
+            $table->foreign("category_id")
                   ->references('id')
                   ->on('categories')
-                  ->onDelete("cascade");
+                  ->onDelete("cascade")->nullable();
             $table->timestamps();
         });
     }

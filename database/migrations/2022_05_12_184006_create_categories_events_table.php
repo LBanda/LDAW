@@ -20,7 +20,7 @@ return new class extends Migration
             //$table->timestamps();
 
             //Índice unique que garantice la integridad referencial N:N
-            $table->unique(["category_id","events_id"]);
+            $table->unique(["category_id","event_id"]);
         });
     }
 
