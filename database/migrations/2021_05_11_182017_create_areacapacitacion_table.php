@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('areacapacitacion', function (Blueprint $table) {
-            $table->id("areac_id");
+            $table->id();
             $table->timestamps();
             $table->string("nombre", 20);
             $table->text("descripcion", 100);
@@ -24,7 +24,7 @@ return new class extends Migration
             //Configuración explícita de llaves foráneas
             $table->foreign("user_id")
                   ->references('id')
-                  ->on('user')
+                  ->on('users')
                   ->onDelete("cascade");
         });
     }
