@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
 
         //Hacer llamada para la tabla users
         $this->call([
-            //UserSeeder::class,
+            UserSeeder::class,
+            CategorySeeder::class,
         ]);
 
     }
